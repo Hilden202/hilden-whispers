@@ -31,6 +31,7 @@ const EpisodePage = () => {
   });
 
   const handleDelete = () => {
+    if (!isLoggedIn) return;
     if (confirm("Är du säker på att du vill ta bort denna episod?")) {
       deleteEpisode(episode.id);
       navigate("/");
