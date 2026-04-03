@@ -1,20 +1,40 @@
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Upload, Music } from "lucide-react";
+import { Upload, Music, Lock } from "lucide-react";
 import { saveEpisode } from "@/lib/episodes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
+const ADMIN_PASSWORD = "hilden2024";
+
 const Admin = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    () => sessionStorage.getItem("admin_auth") === "true"
+  );
+  const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [audioFile, setAudioFile] = useState<File | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+
+  const handleLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true);
+      sessionStorage.setItem("admin_auth", "true");
+    } else {
+      toast({
+        title: "Fel lösenord",
+        description: "Försök igen.",
+        variant: "destructive",
+      });
+    }
+  };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -66,6 +86,35 @@ const Admin = () => {
     };
     reader.readAsDataURL(audioFile);
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="container pb-20 pt-28">
+        <div className="mx-auto max-w-sm animate-fade-in">
+          <div className="flex flex-col items-center gap-4 text-center">
+            <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+              <Lock className="h-8 w-8 text-primary" />
+            </div>
+            <h1 className="text-2xl font-bold tracking-tight">Admin</h1>
+            <p className="text-sm text-muted-foreground">
+              Ange lösenord för att fortsätta.
+            </p>
+            <form onSubmit={handleLogin} className="mt-2 flex w-full flex-col gap-3">
+              <Input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="Lösenord..."
+                className="bg-card/50 text-center"
+                autoFocus
+              />
+              <Button type="submit" className="w-full">Logga in</Button>
+            </form>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="container pb-20 pt-28">
