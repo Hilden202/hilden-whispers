@@ -105,7 +105,7 @@ const Admin = () => {
             <input
               ref={fileInputRef}
               type="file"
-              accept="audio/*"
+              accept=".mp3,.wav,.ogg,.m4a,.aac,.flac,.wma,audio/mpeg,audio/wav,audio/ogg,audio/mp4,audio/aac,audio/flac,audio/x-m4a"
               onChange={handleFileChange}
               className="hidden"
             />
