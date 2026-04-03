@@ -144,51 +144,13 @@ const Admin = () => {
           >
             {isUploading ? "Laddar upp..." : "Publicera episod"}
           </Button>
+        </form>
+      </div>
+    </div>
+  );
+};
 
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full"
-            onClick={() => {
-              // Generate a tiny valid WAV as data URL
-              const header = new ArrayBuffer(44);
-              const view = new DataView(header);
-              const sampleRate = 8000;
-              const numSamples = 8000;
-              const dataSize = numSamples * 2;
-              // RIFF header
-              const writeString = (offset: number, str: string) => { for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i)); };
-              writeString(0, 'RIFF');
-              view.setUint32(4, 36 + dataSize, true);
-              writeString(8, 'WAVE');
-              writeString(12, 'fmt ');
-              view.setUint32(16, 16, true);
-              view.setUint16(20, 1, true);
-              view.setUint16(22, 1, true);
-              view.setUint32(24, sampleRate, true);
-              view.setUint32(28, sampleRate * 2, true);
-              view.setUint16(32, 2, true);
-              view.setUint16(34, 16, true);
-              writeString(36, 'data');
-              view.setUint32(40, dataSize, true);
-              const samples = new Int16Array(numSamples);
-              for (let i = 0; i < numSamples; i++) samples[i] = Math.sin(2 * Math.PI * 440 * i / sampleRate) * 10000;
-              const blob = new Blob([header, samples.buffer], { type: 'audio/wav' });
-              const reader2 = new FileReader();
-              reader2.onload = () => {
-                saveEpisode({
-                  title: "Avsnitt 1: Framtidens teknik",
-                  description: "I detta avsnitt utforskar vi vart tekniken är på väg och vilka möjligheter som väntar. En lugn reflektion om AI, kreativitet och mänsklighetens nästa steg.",
-                  audioUrl: reader2.result as string,
-                });
-                toast({ title: "Demo-episod tillagd!" });
-                navigate("/");
-              };
-              reader2.readAsDataURL(blob);
-            }}
-          >
-            Lägg till demo-episod
-          </Button>
+export default Admin;
         </form>
       </div>
     </div>
