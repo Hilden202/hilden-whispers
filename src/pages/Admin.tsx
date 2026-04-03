@@ -150,11 +150,3 @@ const Admin = () => {
   );
 };
 
-export default Admin;
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default Admin;
