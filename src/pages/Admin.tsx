@@ -6,16 +6,15 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { useAuth } from "@/hooks/use-auth";
 
 const ADMIN_PASSWORD = "hilden2024";
 
 const Admin = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const { isLoggedIn, login } = useAuth();
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    () => sessionStorage.getItem("admin_auth") === "true"
-  );
   const [password, setPassword] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -25,8 +24,7 @@ const Admin = () => {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     if (password === ADMIN_PASSWORD) {
-      setIsAuthenticated(true);
-      sessionStorage.setItem("admin_auth", "true");
+      login();
     } else {
       toast({
         title: "Fel lösenord",
@@ -64,8 +62,6 @@ const Admin = () => {
     }
 
     setIsUploading(true);
-
-    // Convert to base64 for localStorage storage
     const reader = new FileReader();
     reader.onload = () => {
       const audioUrl = reader.result as string;
@@ -87,7 +83,7 @@ const Admin = () => {
     reader.readAsDataURL(audioFile);
   };
 
-  if (!isAuthenticated) {
+  if (!isLoggedIn) {
     return (
       <div className="container pb-20 pt-28">
         <div className="mx-auto max-w-sm animate-fade-in">
@@ -119,12 +115,19 @@ const Admin = () => {
   return (
     <div className="container pb-20 pt-28">
       <div className="mx-auto max-w-xl animate-fade-in">
-        <h1 className="mb-2 text-3xl font-bold tracking-tight">
-          Ladda upp episod
-        </h1>
-        <p className="mb-8 text-muted-foreground">
-          Lägg till en ny episod till Hilden Visioner.
-        </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="mb-1 text-3xl font-bold tracking-tight">
+              Ladda upp episod
+            </h1>
+            <p className="text-muted-foreground">
+              Lägg till en ny episod till Hilden Visioner.
+            </p>
+          </div>
+          <span className="rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
+            Inloggad som Admin
+          </span>
+        </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-5">
           <div>
@@ -138,9 +141,7 @@ const Admin = () => {
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm font-medium">
-              Beskrivning
-            </label>
+            <label className="mb-1.5 block text-sm font-medium">Beskrivning</label>
             <Textarea
               value={description}
               onChange={(e) => setDescription(e.target.value)}
@@ -151,9 +152,7 @@ const Admin = () => {
           </div>
 
           <div>
-            <label className="mb-1.5 block text-sm font-medium">
-              Ljudfil
-            </label>
+            <label className="mb-1.5 block text-sm font-medium">Ljudfil</label>
             <input
               ref={fileInputRef}
               type="file"
@@ -170,30 +169,19 @@ const Admin = () => {
                 <>
                   <Music className="h-8 w-8 text-primary" />
                   <span className="text-sm text-foreground">{audioFile.name}</span>
-                  <span className="text-xs text-muted-foreground">
-                    Klicka för att byta fil
-                  </span>
+                  <span className="text-xs text-muted-foreground">Klicka för att byta fil</span>
                 </>
               ) : (
                 <>
                   <Upload className="h-8 w-8 text-muted-foreground/50" />
-                  <span className="text-sm text-muted-foreground">
-                    Klicka för att välja ljudfil
-                  </span>
-                  <span className="text-xs text-muted-foreground/50">
-                    MP3, WAV, OGG, M4A
-                  </span>
+                  <span className="text-sm text-muted-foreground">Klicka för att välja ljudfil</span>
+                  <span className="text-xs text-muted-foreground/50">MP3, WAV, OGG, M4A</span>
                 </>
               )}
             </button>
           </div>
 
-          <Button
-            type="submit"
-            disabled={isUploading}
-            className="mt-2 w-full"
-            size="lg"
-          >
+          <Button type="submit" disabled={isUploading} className="mt-2 w-full" size="lg">
             {isUploading ? "Laddar upp..." : "Publicera episod"}
           </Button>
         </form>
