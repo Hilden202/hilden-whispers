@@ -18,12 +18,15 @@ const Admin = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file && file.type.startsWith("audio/")) {
+    if (!file) return;
+    const audioExtensions = ['.mp3', '.wav', '.ogg', '.m4a', '.aac', '.flac', '.wma'];
+    const isAudio = file.type.startsWith("audio/") || audioExtensions.some(ext => file.name.toLowerCase().endsWith(ext));
+    if (isAudio) {
       setAudioFile(file);
     } else {
       toast({
         title: "Ogiltigt format",
-        description: "Vänligen välj en ljudfil.",
+        description: "Vänligen välj en ljudfil (MP3, WAV, OGG, M4A).",
         variant: "destructive",
       });
     }
