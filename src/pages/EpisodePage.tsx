@@ -3,10 +3,12 @@ import { ArrowLeft, Calendar, Trash2 } from "lucide-react";
 import { getEpisode, deleteEpisode } from "@/lib/episodes";
 import AudioPlayer from "@/components/AudioPlayer";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth";
 
 const EpisodePage = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const { isLoggedIn } = useAuth();
   const episode = id ? getEpisode(id) : undefined;
 
   if (!episode) {
@@ -61,17 +63,19 @@ const EpisodePage = () => {
 
         <AudioPlayer src={episode.audioUrl} isActive />
 
-        <div className="mt-8 flex justify-end">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={handleDelete}
-            className="text-muted-foreground hover:text-destructive"
-          >
-            <Trash2 className="mr-2 h-4 w-4" />
-            Ta bort episod
-          </Button>
-        </div>
+        {isLoggedIn && (
+          <div className="mt-8 flex justify-end">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={handleDelete}
+              className="text-muted-foreground hover:text-destructive"
+            >
+              <Trash2 className="mr-2 h-4 w-4" />
+              Ta bort episod
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );
