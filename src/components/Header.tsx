@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
-import { LogOut } from "lucide-react";
-import { useAuth } from "@/hooks/use-auth";
+// READ-ONLY MODE: auth-related imports kept but unused.
+// import { LogOut } from "lucide-react";
+// import { useAuth } from "@/hooks/use-auth";
 import logo from "@/assets/hilden-media-logo.jpeg";
 
 const Header = () => {
-  const { isLoggedIn, logout } = useAuth();
+  // const { isLoggedIn, logout } = useAuth();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
@@ -32,6 +33,7 @@ const Header = () => {
           >
             Episoder
           </Link>
+          {/* READ-ONLY MODE: admin/login UI disabled.
           {isLoggedIn && (
             <Link
               to="/admin"
@@ -57,6 +59,7 @@ const Header = () => {
               Admin
             </Link>
           )}
+          */}
         </nav>
       </div>
     </header>

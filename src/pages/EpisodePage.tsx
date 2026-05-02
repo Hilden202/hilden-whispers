@@ -1,14 +1,18 @@
-import { useParams, Link, useNavigate } from "react-router-dom";
-import { ArrowLeft, Calendar, Trash2 } from "lucide-react";
-import { getEpisode, deleteEpisode } from "@/lib/episodes";
+import { useParams, Link } from "react-router-dom";
+// READ-ONLY MODE: delete + auth imports kept but unused.
+// import { useNavigate } from "react-router-dom";
+// import { Trash2 } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
+import { getEpisode } from "@/lib/episodes";
+// import { deleteEpisode } from "@/lib/episodes";
 import AudioPlayer from "@/components/AudioPlayer";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/hooks/use-auth";
+// import { Button } from "@/components/ui/button";
+// import { useAuth } from "@/hooks/use-auth";
 
 const EpisodePage = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
-  const { isLoggedIn } = useAuth();
+  // const navigate = useNavigate();
+  // const { isLoggedIn } = useAuth();
   const episode = id ? getEpisode(id) : undefined;
 
   if (!episode) {
@@ -30,13 +34,14 @@ const EpisodePage = () => {
     day: "numeric",
   });
 
-  const handleDelete = () => {
-    if (!isLoggedIn) return;
-    if (confirm("Är du säker på att du vill ta bort denna episod?")) {
-      deleteEpisode(episode.id);
-      navigate("/");
-    }
-  };
+  // READ-ONLY MODE: delete handler disabled.
+  // const handleDelete = () => {
+  //   if (!isLoggedIn) return;
+  //   if (confirm("Är du säker på att du vill ta bort denna episod?")) {
+  //     deleteEpisode(episode.id);
+  //     navigate("/");
+  //   }
+  // };
 
   return (
     <div className="container pb-20 pt-28">
@@ -64,6 +69,7 @@ const EpisodePage = () => {
 
         <AudioPlayer src={episode.audioUrl} isActive />
 
+        {/* READ-ONLY MODE: delete button disabled.
         {isLoggedIn && (
           <div className="mt-8 flex justify-end">
             <Button
@@ -77,6 +83,7 @@ const EpisodePage = () => {
             </Button>
           </div>
         )}
+        */}
       </div>
     </div>
   );
