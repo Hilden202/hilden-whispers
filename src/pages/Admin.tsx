@@ -1,6 +1,16 @@
+// ============================================================
+// READ-ONLY MODE: The admin page is disabled.
+// All original logic (login, upload form, file handling, save)
+// is preserved below in a commented block so it can be restored.
+// ============================================================
+
+import { Link } from "react-router-dom";
+import { Lock } from "lucide-react";
+
+/*
 import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Upload, Music, Lock } from "lucide-react";
+import { Upload, Music } from "lucide-react";
 import { saveEpisode } from "@/lib/episodes";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,8 +19,10 @@ import { useToast } from "@/hooks/use-toast";
 import { useAuth } from "@/hooks/use-auth";
 
 const ADMIN_PASSWORD = "hilden2024";
+*/
 
 const Admin = () => {
+  /* READ-ONLY MODE: original admin logic disabled.
   const navigate = useNavigate();
   const { toast } = useToast();
   const { isLoggedIn, login } = useAuth();
@@ -185,6 +197,30 @@ const Admin = () => {
             {isUploading ? "Laddar upp..." : "Publicera episod"}
           </Button>
         </form>
+      </div>
+    </div>
+  );
+  */
+
+  // Read-only placeholder UI:
+  return (
+    <div className="container pb-20 pt-28">
+      <div className="mx-auto max-w-sm animate-fade-in">
+        <div className="flex flex-col items-center gap-4 text-center">
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
+            <Lock className="h-8 w-8 text-primary" />
+          </div>
+          <h1 className="text-2xl font-bold tracking-tight">Admin är avstängd</h1>
+          <p className="text-sm text-muted-foreground">
+            Den här appen körs i läsläge. Inga uppladdningar eller ändringar är möjliga just nu.
+          </p>
+          <Link
+            to="/"
+            className="mt-2 text-sm text-primary hover:underline"
+          >
+            Tillbaka till episoderna
+          </Link>
+        </div>
       </div>
     </div>
   );
