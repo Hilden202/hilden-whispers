@@ -66,6 +66,7 @@ export default defineConfig(() => ({
         background_color: "#0d1117",
         display: "standalone",
         orientation: "portrait",
+        scope: basePath,
         start_url: basePath,
         icons: [
           {
