@@ -1,5 +1,5 @@
 <!-- Hilden Visioner banner -->
-<div align="center">
+<div align="left">
   <a href="https://hilden202.github.io/hilden-whispers/" target="_blank">
     <img
       height="220"
