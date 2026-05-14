@@ -22,29 +22,40 @@ const AudioPlayer = ({ src, title, isActive, onPlay }: AudioPlayerProps) => {
 
     const onTimeUpdate = () => setCurrentTime(audio.currentTime);
     const onLoadedMetadata = () => setDuration(audio.duration);
+    const onPlay = () => setIsPlaying(true);
+    const onPause = () => setIsPlaying(false);
     const onEnded = () => setIsPlaying(false);
 
     audio.addEventListener("timeupdate", onTimeUpdate);
     audio.addEventListener("loadedmetadata", onLoadedMetadata);
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
     audio.addEventListener("ended", onEnded);
 
     return () => {
       audio.removeEventListener("timeupdate", onTimeUpdate);
       audio.removeEventListener("loadedmetadata", onLoadedMetadata);
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
       audio.removeEventListener("ended", onEnded);
     };
   }, []);
 
-  const togglePlay = () => {
+  const togglePlay = async () => {
     const audio = audioRef.current;
     if (!audio) return;
+
     if (isPlaying) {
       audio.pause();
-    } else {
-      audio.play();
-      onPlay?.();
+      return;
     }
-    setIsPlaying(!isPlaying);
+
+    try {
+      await audio.play();
+      onPlay?.();
+    } catch {
+      setIsPlaying(false);
+    }
   };
 
   const handleSeek = (value: number[]) => {
@@ -76,7 +87,7 @@ const AudioPlayer = ({ src, title, isActive, onPlay }: AudioPlayerProps) => {
           : "border-border/50 bg-card/50"
       }`}
     >
-      <audio ref={audioRef} src={src} preload="metadata" />
+      <audio ref={audioRef} src={src} preload="metadata" data-testid="episode-audio" />
 
       {title && (
         <p className="mb-3 text-xs font-medium uppercase tracking-wider text-muted-foreground">
@@ -86,7 +97,10 @@ const AudioPlayer = ({ src, title, isActive, onPlay }: AudioPlayerProps) => {
 
       <div className="flex items-center gap-4">
         <button
+          type="button"
           onClick={togglePlay}
+          aria-label={isPlaying ? "Pausa" : "Spela"}
+          data-testid="play-toggle"
           className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground transition-all hover:scale-105 hover:shadow-lg"
         >
           {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4 ml-0.5" />}
@@ -107,7 +121,10 @@ const AudioPlayer = ({ src, title, isActive, onPlay }: AudioPlayerProps) => {
         </div>
 
         <button
+          type="button"
           onClick={toggleMute}
+          aria-label={isMuted ? "Slå på ljud" : "Stäng av ljud"}
+          data-testid="mute-toggle"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
           {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}

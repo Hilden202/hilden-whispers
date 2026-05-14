@@ -1,3 +1,5 @@
+import { publicAssetUrl } from "@/lib/public-assets";
+
 export interface Episode {
   id: string;
   title: string;
@@ -6,12 +8,18 @@ export interface Episode {
   uploadDate: string;
 }
 
-const STORAGE_KEY = "hilden-visioner-episodes";
+const EPISODES: Episode[] = [
+  {
+    id: "hilden-podd-avsnitt-1",
+    title: "Hilden Podd Avsnitt 1",
+    description: "Första avsnittet av Hilden Podd.",
+    audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-1.mp3"),
+    uploadDate: "2026-05-14T00:00:00.000Z",
+  },
+];
 
 export function getEpisodes(): Episode[] {
-  const data = localStorage.getItem(STORAGE_KEY);
-  if (!data) return [];
-  return JSON.parse(data);
+  return EPISODES;
 }
 
 export function getEpisode(id: string): Episode | undefined {
@@ -21,15 +29,6 @@ export function getEpisode(id: string): Episode | undefined {
 // READ-ONLY MODE: write operations are disabled but kept for future restoration.
 export function saveEpisode(episode: Omit<Episode, "id" | "uploadDate">): Episode {
   console.warn("[read-only mode] saveEpisode is disabled.");
-  // const episodes = getEpisodes();
-  // const newEpisode: Episode = {
-  //   ...episode,
-  //   id: crypto.randomUUID(),
-  //   uploadDate: new Date().toISOString(),
-  // };
-  // episodes.unshift(newEpisode);
-  // localStorage.setItem(STORAGE_KEY, JSON.stringify(episodes));
-  // return newEpisode;
   return {
     ...episode,
     id: "",
@@ -39,6 +38,4 @@ export function saveEpisode(episode: Omit<Episode, "id" | "uploadDate">): Episod
 
 export function deleteEpisode(id: string): void {
   console.warn("[read-only mode] deleteEpisode is disabled.", id);
-  // const episodes = getEpisodes().filter((e) => e.id !== id);
-  // localStorage.setItem(STORAGE_KEY, JSON.stringify(episodes));
 }

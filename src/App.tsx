@@ -11,13 +11,16 @@ import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+const routerBasePath = new URL(import.meta.env.BASE_URL, window.location.origin).pathname;
+const routerBasename =
+  routerBasePath === "/" ? undefined : routerBasePath.replace(/\/$/, "");
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={routerBasename}>
         <AmbientBackground />
         <Header />
         <Routes>
