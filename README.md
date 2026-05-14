@@ -4,14 +4,15 @@
     <img
       height="220"
       src="https://raw.githubusercontent.com/Hilden202/HildenMedia/main/images/hilden-podd-banner.png"
-      alt="Hilden Visioner – podcast om teknik, AI och framtid"
+      alt="Hilden Visioner – utforskande podcast om tid och verklighet"
     />
   </a>
 
 # 🎙️ Hilden Visioner
 
-En minimalistisk podcastplattform byggd med React + Vite för Hilden Media.  
-Projektet fokuserar på enkelhet, atmosfär och direkt ljuduppspelning utan onödigt brus.
+En atmosfärisk podcastplattform byggd med React + Vite för Hilden Media.
+
+Projektet kretsar kring utforskande samtal om tid, verklighet, information och medvetande — presenterat genom AI-genererade röster, tankeexperiment och minimalistisk design.
 
 </div>
 
@@ -19,33 +20,41 @@ Projektet fokuserar på enkelhet, atmosfär och direkt ljuduppspelning utan onö
 
 ## 🌌 Om projektet
 
-Hilden Visioner är ett experiment i att kombinera:
+Hilden Visioner började som ett experiment:
 
-- teknik
-- berättande
-- ljud
-- design
-- atmosfär
+Vad händer om man kombinerar programmering, AI, ljuddesign och filosofiska tankeexperiment i ett och samma projekt?
 
-…i ett eget litet digitalt poddrum.
+Resultatet blev en minimalistisk podcastplattform där avsnitten utforskar frågor om:
 
-Projektet fungerar som både:
-- podcastspelare
-- PWA
+- tid
+- perception
+- information
+- observatörer
+- medvetande
+- verklighetens natur
+
+Projektet fungerar både som:
+
+- podcastplattform
 - frontend-experiment
-- kreativ plattform för framtida avsnitt
+- kreativt AI-projekt
+- PWA-applikation
+- digitalt idéarkiv
+
+Allt paketerat i Hilden Medias mörka och atmosfäriska designspråk.
 
 ---
 
 ## ✨ Funktioner
 
-- 🎧 Inbyggd ljudspelare
+- 🎧 Inbyggd podcastspelare
 - 📱 Mobilanpassad design
-- 🌙 Mörkt cinematic UI
+- 🌙 Cinematic dark UI
 - ⚡ Byggd med Vite för snabb laddning
+- 🧠 AI-genererat poddinnehåll
 - 📦 GitHub Pages deploy
-- 🧠 PWA-stöd
 - 👻 Hilden Media-designsystem
+- 📲 PWA-stöd
 
 ---
 
