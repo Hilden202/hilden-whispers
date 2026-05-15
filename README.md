@@ -168,4 +168,4 @@ Hilden Media – Teknik med själ
 
 ## 📜 Licens
 
-Detta projekt är ett personligt och kreativt projekt under Hilden Media.
+Ett kreativt experiment där programmering, AI, ljuddesign och filosofiska modeller möts.
