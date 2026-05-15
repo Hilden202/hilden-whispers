@@ -45,6 +45,30 @@ Allt paketerat i Hilden Medias mörka och atmosfäriska designspråk.
 
 ---
 
+---
+
+## 🧠 Ursprung och idéer
+
+Podcasten bygger delvis på egna tankeexperiment, modeller och visioner kring tid, information, perception och verklighetens natur.
+
+Flera av idéerna och modellerna har tidigare publicerats och dokumenterats via Zenodo som ett personligt och kreativt utforskningsprojekt.
+
+---
+
+## 🎙️ Produktion
+
+Röstsegmenten genererades med hjälp av ElevenLabs och kombinerades därefter manuellt med atmosfäriska ljudmiljöer och ljuddesign i Logic Pro.
+
+Projektet är ett experiment i gränslandet mellan:
+
+- AI-genererad media
+- programmering
+- ljuddesign
+- filosofi
+- digital storytelling
+
+---
+
 ## ✨ Funktioner
 
 - 🎧 Inbyggd podcastspelare
