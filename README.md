@@ -8,9 +8,9 @@
     />
   </a>
 
-# 🎙️ Hilden Visioner
+🎙️ Hilden Visioner
 
-En atmosfärisk podcastplattform byggd med React + Vite för Hilden Media.
+En atmosfärisk podcastplattform skapad för Hilden Media med React, Vite och AI-assisterade utvecklingsverktyg.
 
 Projektet kretsar kring utforskande samtal om tid, verklighet, information och medvetande — presenterat genom AI-genererade röster, tankeexperiment och minimalistisk design.
 
