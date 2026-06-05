@@ -16,6 +16,14 @@ const EPISODES: Episode[] = [
     audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-1.mp3"),
     uploadDate: "2026-05-14T00:00:00.000Z",
   },
+  {
+    id: "hilden-podd-avsnitt-2",
+    title: "Hilden Podd – Avsnitt 2: Dinosaurierna som fortfarande syns",
+    description:
+      "Ett tankeexperiment om dinosaurier, information, observation och vad 'nuet' egentligen betyder.",
+    audioUrl: publicAssetUrl("/audio/Hilden Podd avsnitt 2.mp3"),
+    uploadDate: "2026-06-05T00:00:00.000Z",
+  },
 ];
 
 export function getEpisodes(): Episode[] {
