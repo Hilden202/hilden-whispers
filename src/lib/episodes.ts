@@ -5,6 +5,7 @@ export interface Episode {
   title: string;
   description: string;
   audioUrl: string;
+  coverImage: string;
   uploadDate: string;
 }
 
@@ -14,6 +15,7 @@ const EPISODES: Episode[] = [
     title: "Hilden Podd Avsnitt 1",
     description: "Första avsnittet av Hilden Podd.",
     audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-1.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_1.png"),
     uploadDate: "2026-05-14T00:00:00.000Z",
   },
   {
@@ -22,6 +24,7 @@ const EPISODES: Episode[] = [
     description:
       "Ett tankeexperiment om dinosaurier, information, observation och vad 'nuet' egentligen betyder.",
     audioUrl: publicAssetUrl("/audio/Hilden Podd avsnitt 2.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_2.png"),
     uploadDate: "2026-06-05T00:00:00.000Z",
   },
 ];

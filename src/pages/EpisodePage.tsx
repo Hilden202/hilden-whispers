@@ -54,20 +54,28 @@ const EpisodePage = () => {
           Tillbaka
         </Link>
 
-        <div className="mb-8">
-          <h1 className="mb-3 text-3xl font-bold tracking-tight md:text-4xl">
-            {episode.title}
-          </h1>
-          <div className="mb-6 flex items-center gap-1.5 text-sm text-muted-foreground">
-            <Calendar className="h-4 w-4" />
-            <span>{date}</span>
-          </div>
-          <p className="leading-relaxed text-foreground/80">
-            {episode.description}
-          </p>
-        </div>
+        <article className="mx-auto flex w-full max-w-2xl flex-col gap-6">
+          <img
+            src={episode.coverImage}
+            alt={`Omslag för ${episode.title}`}
+            className="mx-auto aspect-square w-full max-w-[460px] rounded-sm object-cover shadow-xl shadow-black/25"
+          />
 
-        <AudioPlayer src={episode.audioUrl} isActive />
+          <div>
+            <h1 className="mb-3 text-3xl font-bold tracking-tight md:text-4xl">
+              {episode.title}
+            </h1>
+            <div className="mb-5 flex items-center gap-1.5 text-sm text-muted-foreground">
+              <Calendar className="h-4 w-4" />
+              <span>{date}</span>
+            </div>
+            <p className="leading-relaxed text-foreground/80">
+              {episode.description}
+            </p>
+          </div>
+
+          <AudioPlayer src={episode.audioUrl} isActive />
+        </article>
 
         {/* READ-ONLY MODE: delete button disabled.
         {isLoggedIn && (
