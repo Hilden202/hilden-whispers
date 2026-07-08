@@ -23,9 +23,18 @@ const EPISODES: Episode[] = [
     title: "Hilden Podd – Avsnitt 2: Dinosaurierna som fortfarande syns",
     description:
       "Ett tankeexperiment om dinosaurier, information, observation och vad 'nuet' egentligen betyder.",
-    audioUrl: publicAssetUrl("/audio/Hilden Podd avsnitt 2.mp3"),
+    audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-2.mp3"),
     coverImage: publicAssetUrl("/images/avsnitt_2.png"),
     uploadDate: "2026-06-05T00:00:00.000Z",
+  },
+  {
+    id: "hilden-podd-avsnitt-3",
+    title: "Hilden Podd – Avsnitt 3: Medvetandet och själsteorin",
+    description:
+      "Vad är det egentligen som gör att vi fortfarande är oss själva? Ett utforskande av identitet, medvetande och Hilden Själsteori.",
+    audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-3.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_3.png"),
+    uploadDate: "2026-07-09T00:00:00.000Z",
   },
 ];
 
