@@ -36,6 +36,15 @@ const EPISODES: Episode[] = [
     coverImage: publicAssetUrl("/images/avsnitt_3.png"),
     uploadDate: "2026-07-09T00:00:00.000Z",
   },
+  {
+    id: "hilden-podd-avsnitt-4",
+    title: "Hilden Podd – Avsnitt 4: Tidsresor och paradoxen",
+    description:
+      "Kan man verkligen resa i tiden? Och om man kan, vad händer då med paradoxen? Vi utforskar tidsresor och dess konsekvenser.",
+    audioUrl: publicAssetUrl("/audio/hilden-Podd-avsnitt-4.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_4.png"),
+    uploadDate: "2026-08-12T00:00:00.000Z",
+  },
 ];
 
 export function getEpisodes(): Episode[] {
