@@ -45,6 +45,15 @@ const EPISODES: Episode[] = [
     coverImage: publicAssetUrl("/images/avsnitt_4.png"),
     uploadDate: "2026-08-12T00:00:00.000Z",
   },
+  {
+    id: "hilden-podd-avsnitt-5",
+    title: "Hilden Podd – Avsnitt 5: Vad ser vi egentligen när vi ser ett svart hål?",
+    description:
+      "Vad visar egentligen bilden av ett svart hål? Elias och Sara utforskar ljus, skuggor, händelsehorisonter och gränsen mellan det vi kan observera och det vi försöker förstå.",
+    audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-5.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_5.png"),
+    uploadDate: "2026-10-31T00:00:00.000Z",
+  },
 ];
 
 export function getEpisodes(): Episode[] {

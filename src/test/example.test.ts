@@ -9,7 +9,7 @@ describe("episodes", () => {
   it("includes the real podcast episodes", () => {
     const episodes = getEpisodes();
 
-    expect(episodes).toHaveLength(3);
+    expect(episodes).toHaveLength(5);
     expect(episodes[0]).toMatchObject({
       id: "hilden-podd-avsnitt-1",
       title: "Hilden Podd Avsnitt 1",
