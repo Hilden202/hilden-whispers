@@ -25,7 +25,7 @@ const EpisodeCard = ({ episode, index }: EpisodeCardProps) => {
           src={episode.coverImage}
           alt={`Omslag för ${episode.title}`}
           loading="lazy"
-          className="mx-auto aspect-square w-full max-w-[420px] rounded-sm object-cover shadow-lg shadow-black/20 transition-transform duration-300 group-hover:scale-[1.01]"
+          className={`mx-auto w-full max-w-[420px] rounded-sm shadow-lg shadow-black/20 transition-transform duration-300 group-hover:scale-[1.01] ${episode.coverAspect === "video" ? "aspect-video object-contain" : "aspect-square object-cover"}`}
         />
 
         <div className="flex items-start gap-4">

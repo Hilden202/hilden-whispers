@@ -6,6 +6,7 @@ export interface Episode {
   description: string;
   audioUrl: string;
   coverImage: string;
+  coverAspect?: "square" | "video";
   uploadDate: string;
 }
 
@@ -53,6 +54,16 @@ const EPISODES: Episode[] = [
     audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-5.mp3"),
     coverImage: publicAssetUrl("/images/avsnitt_5.png"),
     uploadDate: "2026-10-31T00:00:00.000Z",
+  },
+  {
+    id: "hilden-podd-avsnitt-6",
+    title: "Hilden Podd – Avsnitt 6: Kan evolutionen börja samarbeta med AI?",
+    description:
+      "Tänk om nästa stora steg i evolutionen inte är en robot, utan något som föds. Elias och Sara utforskar hur AI och levande system skulle kunna utvecklas tillsammans, vilka nya förmågor det kan öppna för och vilket ansvar vi har för de första stegen. Ett samtal som skiljer dagens forskning från möjliga framtida tekniker och filosofiska hypoteser.",
+    audioUrl: publicAssetUrl("/audio/hilden-podd-avsnitt-6.mp3"),
+    coverImage: publicAssetUrl("/images/avsnitt_6.png"),
+    coverAspect: "video",
+    uploadDate: "2026-11-05T00:00:00.000Z",
   },
 ];
 

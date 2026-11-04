@@ -58,7 +58,7 @@ const EpisodePage = () => {
           <img
             src={episode.coverImage}
             alt={`Omslag för ${episode.title}`}
-            className="mx-auto aspect-square w-full max-w-[460px] rounded-sm object-cover shadow-xl shadow-black/25"
+            className={`mx-auto w-full max-w-[460px] rounded-sm shadow-xl shadow-black/25 ${episode.coverAspect === "video" ? "aspect-video object-contain" : "aspect-square object-cover"}`}
           />
 
           <div>
